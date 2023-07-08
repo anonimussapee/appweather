@@ -36,15 +36,14 @@ const CardWeather = ({data,tempType }) => {
     }
     const weather =  data.weather;
 if(weather){
-  console.log(weather)
   
   const temps = {f:data.main.temp,c:(data.main.temp - 32)* 5/9}
    let tempRender = tempType.f ? 'f': 'c'
 
   return (
-    <div className='card-weather gap-4 w-[90%]  min-w-[310px]  max-w-[400px] h-[280px] p-4 '>
-      <p className='text-[7rem] temp-grades'>{(temps[tempRender]).toFixed(0)}°{tempRender.toUpperCase()}</p>
-      <div className='img-weather-container  w-[197px] h-[195px]'>
+    <div className='card-weather gap-4 w-[90%]  min-w-[280px]  max-w-[400px] h-[280px] p-8 '>
+      <p className='text-[7rem] sm:text-[4rem] temp-grades'>{(temps[tempRender]).toFixed(0)}°{tempRender.toUpperCase()}</p>
+      <div className='img-weather-container  w-[197px] h-[195px] sm:w-[150px] sm:h-[150px]'>
         <img className='img-weather ' src={statesWeather[weather[0].icon]} alt="imagen del clima" />
       </div>
      

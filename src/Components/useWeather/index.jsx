@@ -13,39 +13,44 @@ const useWeather = ()=>{
 
   useEffect(()=>{
     setLoading(true)
-    if(city.length>0){
-      fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apikey1}&units=imperial`)
-        .then(data => data.json())
-        .then(resp=>{
-          setData(resp)
-          console.log("data city",resp);
-         
-        })
-        .catch(err=> console.log(err))
-      setSincronized(true)
-      
-    }else if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(function(position) {
-        let latitud = position.coords.latitude;
-        let longitud = position.coords.longitude;
-        fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitud}&lon=${longitud}&appid=${apikey1}&units=imperial&lang=es`)
-        .then(data => data.json())
-        .then(resp=>{setData(resp)
-          console.log('navigator data by john',resp);
-        })
-        .catch(err=> console.log(err))
-
+    try {
+      if(city.length>0){
+        fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apikey1}&units=imperial`)
+          .then(data => data.json())
+          .then(resp=>{
+            setData(resp)
+            console.log("data city",resp);
+           
+          })
+          .catch(err=> console.log(err))
         setSincronized(true)
+        
+      }else if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+          let latitud = position.coords.latitude;
+          let longitud = position.coords.longitude;
+          fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${latitud}&lon=${longitud}&appid=${apikey1}&units=imperial&lang=es`)
+          .then(data => data.json())
+          .then(resp=>{setData(resp)
+            console.log('your data',resp);
+          })
+          .catch(err=> console.log(err))
+  
+          setSincronized(true)
+        
+        });
+      } else {
+        console.log("La geolocalización no es compatible en este navegador.");
+        setSincronized(true)
+  
+      }
+      setTimeout(() => {
+        setLoading(false)      
+      }, 3000);
       
-      });
-    } else {
-      console.log("La geolocalización no es compatible en este navegador.");
-      setSincronized(true)
-
+    } catch (error) {
+      console.error(error);
     }
-    setTimeout(() => {
-      setLoading(false)      
-    }, 3000);
   },[sincronized])
 
   

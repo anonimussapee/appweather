@@ -2,7 +2,7 @@ import { BoltIcon, CloudIcon, GlobeAmericasIcon, MoonIcon, SunIcon } from '@hero
 
 const Loading = () =>{
   return (
-    <section className='loading-intro fixed top-0 right-0 left-0 bottom-0 bg-[var(--secondary-color)] z-40 flex flex-col justify-center items-center w-[100%] h-[100%] '>
+    <section className='loading-intro bg-[var(--secondary-color)] z-40 flex flex-col justify-center items-center  '>
     <div className='w-[300px] h-[300px] flex flex-col gap-5 items-center justify-center bg-[#4d4d4d62]  rounded-full p-2'>
       <div className='logo-app w-[280px] h-[200px] '>
 
