@@ -59,8 +59,8 @@ if(weather){
 }else if(weather===undefined){
 
   return (
-    <div className='w-[300px] h-[250px] rounded-full bg-[var(--primary-color)] flex flex-col justify-center items-center'>
-      <h2 className='text-[2rem]'>Error escribe el nombre de la ciudad correctamente</h2>
+    <div className='w-[400px] h-[250px] p-5 rounded-full sm:w-[300px] sm:rounded-[50px] bg-[var(--primary-color)] flex flex-col justify-center items-center'>
+      <h2 className='text-[2.6rem]  text-black dark:text-white'>Error escribe el nombre de la ciudad correctamente y permite el acceso a la ubicación</h2>
     </div>
     );
 }
