@@ -8,15 +8,18 @@ const useWeather = ()=>{
   const [data, setData] =useState({});
   const [city, setCity ] = useState('');
   const [sincronized, setSincronized] = useState(false);
+  const [loading, setLoading]= useState(true)
 
 
   useEffect(()=>{
+    setLoading(true)
     if(city.length>0){
       fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apikey1}&units=imperial`)
         .then(data => data.json())
         .then(resp=>{
           setData(resp)
           console.log("data city",resp);
+         
         })
         .catch(err=> console.log(err))
       setSincronized(true)
@@ -40,7 +43,9 @@ const useWeather = ()=>{
       setSincronized(true)
 
     }
-   
+    setTimeout(() => {
+      setLoading(false)      
+    }, 3000);
   },[sincronized])
 
   
@@ -50,7 +55,8 @@ return {
   data,
   city,
   setCity,
-  setSincronized
+  setSincronized,
+  loading
 }
 }
 

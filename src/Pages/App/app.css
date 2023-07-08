@@ -34,3 +34,38 @@ body{
   background-color: var(--primary-color-button);
   box-shadow: black 0px 5px 10px;
 }
+.loading-intro{
+  background-position: center;
+  background-size: 10%;
+  background-repeat: repeat;
+  background-image: url(../../assets/iconos/2.svg);
+  animation: move 15s infinite linear alternate;
+}
+.logo-app{
+  background-image: url(../../assets/iconos/2.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.loading-bar{
+  animation-delay: 1s;
+  transition: cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  animation:load 5s   ;
+  width: 300px;
+}
+@keyframes move {
+  0%{
+    background-position: right top; 
+
+  }
+  100%{
+    background-position: left bottom;
+  }
+}
+@keyframes load{
+  0%{
+    width: 0px;
+  }
+  100%{
+    width: 300px;
+  }
+}
